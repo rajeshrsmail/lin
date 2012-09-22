@@ -1,0 +1,48 @@
+http://wiki.xensource.com/xenwiki/XenTerminology = This might be useful, live migration.
+virtualizationadmin.com
+
+http://prasadnaik15.wordpress.com/full-virtualization-using-xen/
+http://www.shermann.name/2011/07/quick-tip-for-installing-ubuntu-as.html
+
+1) What is virtualization?
+
+Process of running multiple operating system instances  in a single machine.
+
+2) Various forms of Virtualization?
+
+1) Full Virtualization.
+2) Paravirtualization.
+3) OS-level Virtualiization.
+
+
+3) What is Full virtualization?
+
+
+
+4) what is a hypervisor?
+
+ We can think of a Hypervisor as the kernel or the core of a virtualization platform. The Hypervisor is also called the Virtual Machine Monitor. The Hypervisor has access to the physical host hardware.
+
+Of the total amount of disk space taken for a virtualization platform (like Hyper-V or VMware ESX), the Hypervisor is, by far, the smallest part. A Type 1 Hypervisor runs on the bare metal of the hardware. Examples of a Type 1 Hypervisor are Hyper-V and ESX Server. A Type 2 Hypervisor is hosted by an operating system. Examples of a Type 2 Hypervisor are VMware Server and Microsoft Virtual Serve
+
+5) Notes, Important:
+
+a) In Xen, the physical machine runs the hypervisor.
+
+simulation - act of imitating something.
+
+
+Hi Friends,
+ 
+1) Full virtualization :  Example is VMWare, VirtualBox.
+
+   Functioning:  The system will have an operating system.  We install a virtualization software like VMWare. When we create a virtual machine, the VMware emulates (duplicates) the entire hardware of the host system to the new guest operating system.  In this Full virtualization, the guest OS will have its own set of virtualized resources such as the network card, drivers, etc.
+
+2) Paravirtualization :  Example is Xen.
+
+   Functioning:  The system should have a kernel which supports paravirtualization.  The guest OS is aware that it is being virtualized and co-ordinates with the hypervisor.
+
+3) Hardware Virtualization:  No 
+
+What is virtualization?
+
