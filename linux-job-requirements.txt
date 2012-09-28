@@ -1,1 +1,21 @@
 Implement, and operate LANs, WLANs, and WANs, using equipment including Cisco routers, switches, wireless network equipment, network security devices, UPSs, and other network devices Need to understand dhcp, dns, network subnets, gateways, proxy, firewall, vpn. Experience with virtualization technology such as VMware, VirtualBox, Zen Required to have knowledge of setting up LDAP server and configuring clients. Linux expertise and Knowledge of version control system such as cvs, git, svn are added advantage Application server maintenance experience required. Have working knowledge of setting up application servers ( IIS, Apache ) and configuring databases (MySQL/SQL servers ) Perform installation, configuration, maintenance, and troubleshooting of network hardware, software ( including operating systems), and peripheral devices Should have expertise in using tools like Norton Ghost/Arconis system backups as back up tools and Nagios as network monitoring tools. Provide highly skilled technical assistance in completing network planning, engineering, and architecture. Provide highlevel support and rapid resolution to network problems. Deploys, configures, and maintains the health of various infrastructure systems including Network hardware and Servers. Responsible for the day to day sustaining activities for the organization Develops, maintains, and executes documentation, policies, and procedures for the organization. Provides leadership to ensure that system security issues are addressed effectively within the enterprise environment. Prepares long and short term plans for systems maintenance, production activities, and upgrades as necessary for system health. Responsible for the definition and maintenance of alert response procedures to include monitoring, alerting, troubleshooting, resolution and escalation of issues to the appropriate technical resources.
+
+
+Experience:
+
+- A basic knowledge and understanding of operating systems and database environments as normally obtained through the completion of a Bachelor s degree in computer science.
+- Minimum of 3 years experience working in a Linux environment.
+- Experience working in a Dev-Ops model, directly supporting high performance development teams
+- Ability to wear many hats and pick up new roles
+- Passionate about designing and implementing innovative solutions to complex problems
+
+Skills:
+
+- Senior-level knowledge of the Linux operating system
+- Experience with public cloud services (Amazon EC2, Rackspace, Joyent ...)
+- Fluent with a high-level scripting language (preferably Ruby)
+- Experience with configuration management systems (Chef, Puppet ...)
+- Experience with large relational databases (Specifically MySQL and Oracle RAC)
+- Experience with large NoSQL databases, especially of the Key/Value store variety (Riak, Redis, SimpleDB, ...)
+- Experience supporting and troubleshooting Java application servers (Glassfish, Tomcat, Jboss ...)
+NOTE: if the above job description is comfirtable please send me your updated profile to
