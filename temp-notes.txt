@@ -1,0 +1,20 @@
+1) How to use yum and up2date:
+
+sakafi.wordpress.com/2008/01/03/how-to-use-yum-up2date.
+
+2) yum update
+
+this command upgrades all packages 
+
+3) To update httpd -->  yum update httpd  ( This will upgrade httpd).
+
+4) What is nmap portnumber and how to block it?
+
+5)  rpm --checksig -v filename.rpm
+
+6) rpm -qa gpg-pubkey*
+The provider of your rpm signed it with its private key.
+
+7) yum install --nogpgcheck yum-downloadonly
+
+8) linuxquestions/fedora-35/publickey-not-installed-468615
