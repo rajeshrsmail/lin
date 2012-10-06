@@ -1,0 +1,43 @@
+1) What is the meaning of the phrase "Cock and bull story"?
+
+http://www.phrases.org.uk/meanings/cock%20and%20bull%20story.html
+
+
+2) Senthil sir writeup:
+
+Senthil Nayagam, Co-Founder and CEO of RailsFactory
+8 votes by Magesh Sadasivam, Pandu Balraj, Anirudh Sundararaman, (more)
+I was surprised by mention of RailsFactory in the question. also asking anonymously
+
+Still willing to share our story
+
+Will share my secrets
+First secret getting started.
+
+In 2006 when I had a opportunity to start on my own, I chose ruby on rails an upcoming web framework which was being used in startups.
+
+a) We chose  ruby on rails
+b) We wanted to work with startups and do exciting work
+c) By calling ourselves RailsFactory, we kind of burned the bridges no php/python or other technology work would come for us 
+
+
+So if you plan to hacker/programmer person and want to start a technology company, my advice would be
+a) Focus on technology, 
+b) Be a expert in your technology,
+c) Always be accessible for your customers and developers, 
+d) Price reasonably to keep you and your team busy,
+e) Keep yourself updated on technology and industry changes,
+f) Be part of local groups for entrepreneurs, technology,
+g) Share your experience,
+h) Be ethical,
+
+
+There are no shortcuts, RailsFactory is the largest company I have worked in and also the longest time for that matter.
+
+You have to survive before you can grow, self sustain the operations, have operating profit, pay taxes as it gives credibility and a chance to access to bank loans.
+
+First 1-2 years we were very flat organization , but when the number grew and complexity grew, we have opted for hierarchical organization structure
+
+Initial years, I and Dinesh played every role, but over time when you find responsible people inside the organisation or when you can hire them, you delegate those roles.
+
+The last secret is persistence and sharing your success , I have been going to Open Coffee Club, Chennai Geeks and other events for past 6 years, and people know me as the guy from RailsFactory. Each time people ask me how I am and about my company, I have good things to tell, and they are excited and have more goodwill

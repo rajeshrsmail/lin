@@ -1,0 +1,174 @@
+From the Linux Administration Handbook:
+
+
+Apache Topics:
+
+(1)  Apache main configuration file and its sections.
+(2)  
+
+1) What does HTTP do ?
+
+HTTP is a protocol that is used to transmit, format and link documents which contain variety of media types including text, pictures, sound, animation, and video.  
+Note:  HTTP is a TCP-based protocol.
+
+2) What is a web server?
+
+Web server is a computer that answers HTTP requests.  
+
+3) What is HTTPS?
+
+HTTPS is a protocol which does that same things as HTTP does, but also has an additional feature:  Transmission of data securely.  This HTTPS protocol need to be taken care by a daemon which can understand SSL protocol and listens for requests on TCP port 443.
+
+
+
+=================================================================
+                   HTACCESS
+=================================================================
+
+1) SuperLink on htaccess:  http://wiki.apache.org/httpd/Htaccess
+2) Superlink2 on htaccess:  http://www.htaccess-guide.com
+
+
+(a) Provide details about .htaccess file:
+
+
+
+5) What is .htaccess file?
+
+ The purpose of .htaccess file is to provide a means to configure Apache for users who cannot modify the main configuration file.  This file will be used in environments such as shared hosting environments, in which users would be given access only to their home directories ( maybe additionally some apache DocumentRoot directories).
+ 
+ .htaccess is a configuration file for use on web servers running the Apache Web Server software. When a .htaccess file is placed in a directory which is in turn 'loaded via the Apache Web Server', then the .htaccess file is detected and executed by the Apache Web Server software. These .htaccess files can be used to alter the configuration of the Apache Web Server software to enable/disable additional functionality and features that the Apache Web Server software has to offer. These facilities include basic redirect functionality, for instance if a 404 file not found error occurs, or for more advanced functions such as content password protection or image hot link prevention.
+ 
+ 
+6) How to change the name of the .htaccess to say .htconfig
+ 
+ Provide the following in /etc/httpd/conf/httpd.conf
+ AccessFileName .htconfig
+ 
+ 7) How can we specify in httpd.conf that .htaccess file needs to be considered?
+ 
+ vim /etc/httpd/conf/httpd.conf
+ AllowOverride Authconfig
+ 
+ 
+ Note:  By default AllowOverride would be as follows:
+ 
+ AllowOverride None.  We need to change this to AllowOverride Authconfig
+ 
+ 8) What do you know about the directive "AllowOverride" ?
+ 
+ a) AllowOverride directive specifies what are all the directives that could be used within a .htaccess file.
+ 
+ b) Note: AllowOverride directive could be used only inside the Directory container.  It cannot be used with Location or other containers.
+ 
+ b) There are several options we can use with AllowOverrride:
+ 
+       -Allowoverride None
+       -AllowOverride Options
+       -AllowOverride Indexes
+       -AllowOverride Limit
+       -AllowOverride AuthConfig
+       -AllowOverride All
+       
+ AllowOverride None  -  When this option is used, then .htaccess files are completely ignored.
+ AllowOverride Options - See http://httpd.apache.org/docs/2.2/mod/core.html
+ AlllowOverride Indexes - See http://httpd.apache.org/docs/2.2/mod/core.html
+ AllowOverride Limit - http://httpd.apache.org/docs/2.2/mod/core.html
+ AllowOverride AuthConfig - If a .htaccess file is present, then read it and also include only the directives related to authorization such as  (AuthDBMGroupFile, AuthDBMUserFile,  
+ AuthGroupFile, AuthName, AuthType, AuthUserFile, Require, etc.) 
+ AllowOverride All - If a .htaccess file is present in a directory and its subdirectories, then read them.  Also, include all the options such as Options, Indexes, Limit, AuthConfig, etc.
+ 
+ 
+ 
+ 8) Important Notes/findings about .htaccess:
+ 
+ 
+ a) AllowOverride directive could be used in a virtual host file only through the Directory block.  For eg:
+ 
+    <Directory /some/dir>
+		  AllowOverride AuthConfig
+			</Directory>
+ 
+ 
+ 9) How to set up an Error Document in .htaccess file?
+ 
+ 
+ vim /public/html/mysite/.htaccesss
+ 
+ AuthName "somename"
+ AuthType Basic
+ AuthUserFile .htpasswd
+ Require valid-user
+ ErrorDocument 404 /404.html    ( note the slash before 404.html is a must, else it would not provide you the desired results. )
+ 
+ 
+ =================================
+ Order deny, allow and
+ Order allow,deny
+ =================================
+ 
+ Mainly referenced the following link:  http://www.maxi-pedia.com/Order+allow+deny
+ 
+Example: Allow from 10.1.2.3
+Example: Allow from 10.1
+Example:  Deny from 10.0.0.0
+Example:  Deny from 10.1
+
+let's take a look at how Order allow,deny works.
+
+<Directory "/www">
+Order Allow,Deny
+Deny from all
+Allow from all
+</Directory>
+
+In this case, your client would be denied access. Why? Because Apache first evaluates the Allow directive rules and then the Deny directive rules, so Allow from all would be executed first and then the Deny from all would take place.
+
+Now the same example with the Order allow,deny swapped.
+
+<Directory "/www">
+Order Deny,Allow
+Deny from all
+Allow from all
+</Directory>
+
+The configuration above would result in your client being allowed access because the Deny from all rule would be processed first and the Allow from all rule would be processed  second. Now, let's get more specific. The following example could be used for specialized and restricted servers, for example some kind of intranet site.
+
+<Directory "/www">
+Order Deny,Allow
+Deny from all
+Allow from example.com
+</Directory>
+
+This is a bit expanded application of the Order directive. This configuration would restrict everyone from accessing the /www directory but hosts in the example.com domain. Abc.example.com would be allowed access, www.myexample.com would be restricted. Now, let's say you want to do the opposite. You want to restrict someone from some specific domain (perhaps someone who is attacking your web site) and allow everyone else.
+
+<Directory "/www">
+Order Allow,Deny
+Allow from all
+Deny from www.myexample.com
+</Directory>
+
+The configuration provided above would give access to everyone and restrict all hosts from the www.myexample.com domain.
+
+Now, what happens if you forget to provide specific rules and use just the Order allow,deny directive alone?
+
+<Directory /www>
+  Order Allow,Deny
+</Directory>
+
+The presence of an Order directive can affect access to a part of the server even in the absence of accompanying Allow and Deny directives. That is because when you specify the Order allow,deny you also control the default access state. The example above will Deny all access to the /www directory because the default access state is set to Deny.
+ 
+ 
+ Order allow,deny tells your web server that the Allow rules are processed before the Deny rules.
+ 
+ Order deny, allow means that the deny rules are processed before the allow rules
+ 
+ 
+ 
+ 
+ 
+ 10) Redirect:
+ 
+Redirect /old_dir/ http://www.yourdomain.com/new_dir/index.html
+ 
+ A
