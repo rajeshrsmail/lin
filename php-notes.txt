@@ -1,3 +1,131 @@
+
+                                  PHP
+
+Section1-a: How to install php via apt-get in Ubuntu?
+Section1-b: How to install php from source in Ubuntu?
+Section1-c: How to install php via binary (rpm) in Centos?
+Section2: phpinfo
+Section3: How to define a variable in php?
+Section4: How to display date in php?
+SectionZ: My Doubts?
+
+
+
+
+
+====================================================
+Chapter1a: How to install php via apt-get in Ubuntu?
+====================================================
+apt-get install php5 php5-cli php5-cgi php5-common php5-dev php5-gd php5-mcrypt php5-mysql libapache2-mod-php5
+
+
+
+===============================================
+Chapter1b: How to install php from source in Ubuntu?
+===============================================
+root@lucidlynx1:~/source/php-5.2.17# make install
+Installing PHP SAPI module:       apache2handler
+/usr/share/apache2/build/instdso.sh SH_LIBTOOL='/usr/share/apr-1.0/build/libtool' libphp5.la /usr/lib/apache2/modules
+/usr/share/apr-1.0/build/libtool --mode=install cp libphp5.la /usr/lib/apache2/modules/
+libtool: install: cp .libs/libphp5.so /usr/lib/apache2/modules/libphp5.so
+libtool: install: cp .libs/libphp5.lai /usr/lib/apache2/modules/libphp5.la
+libtool: install: warning: remember to run `libtool --finish /root/source/php-5.2.17/libs'
+chmod 644 /usr/lib/apache2/modules/libphp5.so
+G[preparing module `php5' in /etc/apache2/mods-available/php5.load]
+Module php5 already enabled
+Installing PHP CLI binary:        /usr/bin/
+Installing PHP CLI man page:      /usr/man/man1/
+Installing build environment:     /usr/lib/php/build/
+Installing header files:          /usr/include/php/
+Installing helper programs:       /usr/bin/
+  program: phpize
+  program: php-config
+Installing man pages:             /usr/man/man1/
+  page: phpize.1
+  page: php-config.1
+Installing PEAR environment:      /usr/lib/php/
+[PEAR] Archive_Tar    - installed: 1.3.7
+[PEAR] Console_Getopt - installed: 1.2.3
+[PEAR] Structures_Graph- installed: 1.0.3
+[PEAR] XML_Util       - installed: 1.2.1
+[PEAR] PEAR           - installed: 1.9.1
+Wrote PEAR system config file at: /usr/etc/pear.conf
+You may want to add: /usr/lib/php to your php.ini include_path
+Installing PDO headers:          /usr/include/php/ext/pdo/
+
+
+
+
+Step1:  First install the library/dependency packages needed:
+
+pt-get install libxml2-dev apache2-threaded-dev  libtool libcurl4-gnutls-dev libenchant-dev libpng-dev libmpc-dev libmcrypt-dev libreadline5-dev libglib2.0-dev 
+
+
+./configure --prefix=/usr --enable-fastcgi --with-zlib --enable-calendar --enable-mbstring --with-mysql --with-pcre-regex --with-gd  --with-openssl --with-mysql-sock --enable-gd-native-ttf --with-mysqli=/usr/bin/mysql_config --with-mysql --with-pdo-mysql --with-apxs2=/usr/bin/apxs2 --with-ldap --with-curl --enable-dba --with-mcrypt --with-readline --enable-zip --enable-gd-native-ttf
+
+LoadModule php5_module /root/install_scripts/rhel5.4/php-5.2.16/libs/libphp5.so
+
+============================================================
+Section1-c: How to install php via binary (rpm) in Centos?
+============================================================
+
+yum install php php-devel php-common php-mysql php-mbstring php-cli php-pdo 
+
+==========================================
+section3:  phpinfo
+===========================================
+vi phpsite.com
+
+<VirtualHost *:80>
+ServerName phpsite.com
+DocumentRoot /var/www/phpsite.com
+</VirtualHost>
+
+vi /var/www/phpsite.com
+
+<?php
+phpinfo();
+?>
+
+=========================================
+section3: How to display date in php?
+=========================================
+
+vi date.php
+
+<?php
+
+echo date("d-m-Y");
+printf("\n");
+echo date("d/m/Y");
+printf("\n");
+echo date("d.m.Y");
+printf("\n");
+?>
+
+===========================================
+Section4:  How to define a variable in php?
+============================================
+vi variable.php
+
+<?php
+$NAME=rajesh;
+printf("My name is $NAME\n");
+?>
+
+
+
+================================================
+SectionZ: My Doubts in php
+================================================
+
+What is php cli and php cgi.  why each has a configuration
+file?
+
+================================================
+Section5:  How to integrate PHP and MySQL
+================================================
+
 Step1:  mkdir /var/www/apps/phpapp1.loc
 Step2:  cd /var/www/apps/phpapp1.loc
 Step3:  vim /var/www/apps/phpapp1.loc/config/db_config.php
@@ -31,3 +159,12 @@ Step5:  vim /var/www/apps/phpapp1.loc/temp_conf.php_app1
 echo "Connection Made";
 ?>
 
+======================================================
+Section6: How to concatenate two strings in PHP?
+======================================================
+
+<?php
+$string1="Pravija";
+$string2="Rajesh";
+echo "$string1"."$string2\n";
+?>
