@@ -187,8 +187,108 @@ Chapter1:  PHP Basics
 Question:  What does PHP Stand for:
 Answer:  PHP: HyperText Preprocessor.
 
-Notes:  PHP is a Server-Side Scripting language.
-           It is used for creating dynamic websites.
-					 It processes web pages contained in the web server before they are sent to the web browser which requests those pages.
-					 The PHP code is processed by the PHP modules.
-					 
+Notes:  
+1)PHP is a Server-Side Scripting language.
+2)It is used for creating dynamic websites.
+3) It processes web pages contained in the web server before they are sent to the web browser which requests those pages.
+4) The PHP code is processed by the PHP modules.
+5) Inorder to PHP code be executed, you need to install PHP in your system and also Apache or similar webserver need to be running.
+6) The PHP modules attached to your webserver would be telling it that files with certain extension should be checked for PHP code.
+7) When a web client ( browser ) requests for something like http://somesite.com/index.php then the webserver would accept the request.  The PHP modules attached to the webserver would be telling it that index.php means, then it should be checked for PHP code and the PHP modules would be taking responsible for executing it.  The output of the PHP code would be sent to the web client ( browser).
+8) One thing PHP does not doe is client-side validation.
+9) What is client-side validation?  ->  Client-side validation means that the value entered in one field should meet certain criteria before moving to the next field.
+10) So, if PHP does not support client-side validation, how it would be achieved? -> Client-side validation would be achieved once PHP works along with javascript.
+11) The beauty of PHP is that it does not rely on web browser at all.  Your PHP script would be running no matter what browser you use.  There is no need to worry about whether its compatable with old browsers or whether it would work or not with some other browsers available in the market.
+
+========================================================================================
+Chapter2 :  PHP TAGS
+========================================================================================
+
+Today is <?php echo date('j F Y'); ?>
+
+The above tag tells PHP that whetever follows <?php is a program code and not html code.
+
+1) <?php
+2) <?  -> short tag
+3) <%  -> The ASP tag style.
+
+
+==========================================================================================
+Chapter 3: Variables
+==========================================================================================
+
+The topics covered in this chapter are:
+
+1) Understanding variables.
+2) Data Types.
+
+
+1)Question:  What is a variable?
+
+Answer:  Variables are containers into which values could be stored and then could be later retrieved.
+
+2) Provide an example for variable ?
+
+<?php
+$name="Rajesh";
+echo "$name";
+echo "\n";
+?>
+
+Output=>  Rajesh
+
+3) Does the following provide the same output?
+
+<?php
+$name="Rajesh";
+echo '$name';
+echo "\n";
+?>
+
+Answer:  No, the output will be $name.  Since echoing is followed by single quotes for the variable.
+
+4) What is a data type?
+
+The type of the value that a variable is holding is called a data type.
+
+  a) integer (  A positive or negative whole number )
+  b) float   ( Decimal values)
+  c) string   ( Alphanumeric values)
+  d) Boolean ( Yes or No truth values ).
+
+When you assign a value to a variable, its datatype would be automatically set by PHP.
+
+To check this, do the following:
+
+<?php
+
+value=8.2;
+echo gettype($value);
+echo "\n";
+?>
+
+Lab Exercise:
+
+Write a PHP program to print Hello,Chris:
+
+
+<?php
+$name="Chris";
+echo "Hello,"."$name";
+echo "\n";
+?>
+
+Lab Exercise2:
+
+Write a PHP Program to add 2 numbers:
+
+<?php
+$sum = 16 + 20;
+echo $sum;
+?>
+
+
+
+
+
+
