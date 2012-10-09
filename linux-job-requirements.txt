@@ -19,3 +19,95 @@ Skills:
 - Experience with large NoSQL databases, especially of the Key/Value store variety (Riak, Redis, SimpleDB, ...)
 - Experience supporting and troubleshooting Java application servers (Glassfish, Tomcat, Jboss ...)
 NOTE: if the above job description is comfirtable please send me your updated profile to
+
+
+
+Course content : 
+
+	SOP required for Ubuntu OS Installation (thru CD and also with ISO image) 
+	OS level Trouble shooting
+	TVS Printer Installation and troubleshooting with respect to Ubuntu OS
+	MFP Printer Installation and troubleshooting with respect to Ubuntu OS
+	Types and usage of Commands used in Ubuntu OS (Command Prompt)
+	Third Party software installation and removing with respect to Ubuntu OS
+	Data Recovery Module thru terminal in Ubuntu OS
+	Log files analyzing module with respect to Ubuntu OS
+	FSCK problem 
+	Root level issues 
+	System Services with respect to Ubuntu OS
+	How to work thru command prompt in Ubuntu OS
+	Sudo 
+	Scanner installation and troubleshooting with respect to Ubuntu OS
+	SOP required for Booting Problem with respect to Ubuntu OS
+	How to enable Sharing options and trouble shooting in Ubuntu OS
+	Difference between Windows and Ubuntu OS (installation and Trouble shooting)
+	Printer and File sharing procedure with respect to Ubuntu OS
+	Access rights and User Administration
+	System restoration 
+	Troubleshooting of default settings (Mouse, Key Board, System Display)
+	How to Use SSH and telnet options in Ubuntu OS
+	Kernel services
+	File system Management
+	GRUB level error, INIT initialization, Kernel initialization, Boot Loader Components
+	Managing Start up - a) Changing the default run Level b) Exploring Xinted services
+	Syslog configuration
+	CUPS printer administration
+	Mounting file systems
+	Virtualization 
+	Recovery Run levels
+	File system problem during boot
+	Rescue environment
+	RPM packages with respect to Ubuntu
+	Installing software in rescue modes
+	System performance & Security
+	Account management
+
+: TBD
+
+Course content : 
+
+	SOP required for Ubuntu OS Installation (thru CD and also with ISO image) 
+	OS level Trouble shooting
+	TVS Printer Installation and troubleshooting with respect to Ubuntu OS
+	MFP Printer Installation and troubleshooting with respect to Bunted OS
+	Types and usage of Commands used in Ubuntu OS (Command Prompt)
+	Third Party software installation and removing with respect to Ubuntu OS
+	Data Recovery Module thru terminal in Ubuntu OS
+	Log files analyzing module with respect to Ubuntu OS
+	FSCK problem 
+	Root level issues 
+	System Services with respect to Ubuntu OS
+	How to work thru command prompt in Ubuntu OS
+	Sudo 
+	Scanner installation and troubleshooting with respect to Ubuntu OS
+	SOP required for Booting Problem with respect to Ubuntu OS
+	How to enable Sharing options and trouble shooting in Ubuntu OS
+	Difference between Windows and Ubuntu OS (installation and Trouble shooting)
+	Printer and File sharing procedure with respect to Ubuntu OS
+	Access rights and User Administration
+	System restoration 
+	Troubleshooting of default settings (Mouse, Key Board, System Display)
+	How to Use SSH and telnet options in Ubuntu OS
+	Kernel services
+	File system Management
+	GRUB level error, INIT initialization, Kernel initialization, Boot Loader Components
+	Managing Start up - a) Changing the default run Level b) Exploring Xinted services
+	Syslog configuration
+	CUPS printer administration
+	Mounting file systems
+	Virtualization 
+	Recovery Run levels
+	File system problem during boot
+	Rescue environment
+	RPM packages with respect to Ubuntu
+	Installing software in rescue modes
+	System performance & Security
+	Account management
+
+
+
+Please note:Its not permanent job. 
+Trainer should have relevant work experience in training. 
+Candidate should be ready to relocate to training location temporarily .
+Trainer physical presence is mandatory and no online trainers .
+Compensation will be paid per day basis. 

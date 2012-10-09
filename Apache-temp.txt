@@ -1,6 +1,95 @@
+
+Chapter1:  Apache Superlinks
+Chapter2:  Building Apache from Source
+Chapter3:  HTTP status codes
+
 From the Linux Administration Handbook:
 
+========================
+Chapter1:  Apache SuperLinks:
+========================
 
+1) http://articles.slicehost.com/apache
+
+    Comment:  Never to be missed.
+    
+==============================
+Chapter2:  Building Apache from Source
+==============================
+ 
+ 1) Latest stable release as of July 2012 -> 2.4.3
+ 
+ 2) Download and Installation steps: ( available in rsrbackup -> googleDocs )
+ 
+ Note:  Apache 2.4.3 needs apr version 1.4.0 and above, but CentOS 5.4 has apr 1.3.9.  So, when you are about to install 2.4.3 make sure you have the correct version of apr and apr-util available in your system.  If yum repo has already apr and apr with required versions, then good.  Else, download apr and apr-util from apache site and install them.  Later, install apache.
+
+Step1:  yum install pcre pcre-devel
+
+Step2:  (A) Installation of APR
+1) wget http://apache.techartifact.com/mirror/apr/apr-1.4.6.tar.gz
+2) tar zxvf apr-1.4.6.tar.gz
+3) cd apr-1.4.6
+4) ./configure
+5) make
+6) make install
+
+Step3:  Installation of apr-util
+
+(1) wget http://apache.techartifact.com/mirror/apr/apr-util-1.5.1.tar.gz
+(2) tar zxvf apr-util-1.5.1.tar.gz
+(3) cd apr-util-1.5.1
+(4) ./configure --with-apr=/usr/local/apr
+(5) 
+ 
+ (a) cd /root/source
+ (b) wget http://www.apache.org/dist/httpd/httpd-2.4.3.tar.gz
+ (c) tar zxvf httpd-2.4.3.tar.gz
+ (d) cd httpd-2.4.3
+ (e) ./configure --help
+ (f) ./configure --prefix /usr/local/apache2 ( Actually this is the default!!! If you do not specify prefix too.. it will automatically create /usr/local/apache2 and intall all apache files !!!) 
+( g)  make
+(h) make install
+(i) vim /etc/profile
+(j) ln -s /usr/local/apache2/apachectl /etc/init.d/apache2-src
+(k) make sure /etc/init.d/apache2-src is executable.
+(l) update-rc.d -f apache2-src defaults (or) chkconfig add apache2-src
+(m) /etc/init.d/apache2-src start
+(n) ps -ef | grep apache2-src
+
+Now, this should be running....
+
+Question:  What is the MPM Module by default, when you compile from source:
+
+mpm_event
+
+"event" seems to be an experimental variant of worker mpm module.
+ 
+ ==================================
+ Chapter3:  HTTP status codes
+ ===================================
+ 
+ 1xx      =         Informational
+ 2xx      =         Success
+ 3xx      =          Redirection
+ 4xx      =          Client Error
+ 5xx      =          Server Error 
+ 
+ In detail:
+ 
+ 403  - Forbidden  ( eg. There is no index.html file AND Options -Indexes is set, then you will get this error )
+ 404  -  Page not found on the server.
+ 
+503   - >>
+ 
+ ====================
+ What is apachectl command
+ =====================
+ 
+ Apachectl is a wrapper script.
+ 
+ apachectl configtest = httpd -t
+ 
+ apachectl start
 Apache Topics:
 
 (1)  Apache main configuration file and its sections.
