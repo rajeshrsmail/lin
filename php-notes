@@ -1,0 +1,20 @@
+
+
+vim /var/www/apps/php_app1/config/db_config.php
+
+<?php
+				$db_host	=	"localhost";
+				$db_name	=	"app1db";
+				$db_user	=	"rajeshrs";
+				$db_pwd	=	"abcd1234";
+				
+	?>
+	
+	
+	vim /var/www/apps/php_app1/temp_conf.php_app1
+	
+	require ($_SERVER["DOCUMENT ROOT"]."/config/db_config.php");
+	$connection =	 mysql_connect ( $db_host,  $db_user, $db_password) or die ( "error connecting");
+	
+	
+	
