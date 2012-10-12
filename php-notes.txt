@@ -1,0 +1,33 @@
+Step1:  mkdir /var/www/apps/phpapp1.loc
+Step2:  cd /var/www/apps/phpapp1.loc
+Step3:  vim /var/www/apps/phpapp1.loc/config/db_config.php
+
+<?php
+                                $db_host        =       "localhost";
+                                $db_name        =       "phpapp1db";
+                                $db_user        =       "phpapp1dbuser";
+                                $db_password    =       "abcd1234";
+
+        ?>
+
+Step4:  mkdir /var/www/apps/phpapp1.loc/config
+        cd /var/www/apps/phpapp1.loc/config
+        vim db_config.php
+   
+       <?php
+				$db_host	=	"localhost";
+				$db_name	=	"phpapp1db";
+				$db_user	=	"phpapp1dbuser";
+				$db_pwd		=	"abcd1234";
+				
+?>
+
+
+       
+Step5:  vim /var/www/apps/phpapp1.loc/temp_conf.php_app1
+<?php
+        require ($_SERVER["DOCUMENT_ROOT"]."/config/db_config.php");
+        $connection =    mysql_connect ( $db_host,  $db_user, $db_password) or die ( "error connecting");
+echo "Connection Made";
+?>
+
