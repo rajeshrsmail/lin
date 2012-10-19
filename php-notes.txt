@@ -168,3 +168,27 @@ $string1="Pravija";
 $string2="Rajesh";
 echo "$string1"."$string2\n";
 ?>
+
+
+
+====================================================
+Section7:  Learning PHP
+====================================================
+
+Getting to know PHP:
+
+Chapter1:  PHP Basics
+							Server-Side Scripting
+							PHP Tags
+							Creating your first scripts
+							The Echo Command
+							
+
+Question:  What does PHP Stand for:
+Answer:  PHP: HyperText Preprocessor.
+
+Notes:  PHP is a Server-Side Scripting language.
+           It is used for creating dynamic websites.
+					 It processes web pages contained in the web server before they are sent to the web browser which requests those pages.
+					 The PHP code is processed by the PHP modules.
+					 
