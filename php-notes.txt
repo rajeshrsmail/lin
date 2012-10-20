@@ -189,17 +189,79 @@ Answer:  PHP: HyperText Preprocessor.
 
 Notes:  
 1)PHP is a Server-Side Scripting language.
-2)It is used for creating dynamic websites.
-3) It processes web pages contained in the web server before they are sent to the web browser which requests those pages.
-4) The PHP code is processed by the PHP modules.
-5) Inorder to PHP code be executed, you need to install PHP in your system and also Apache or similar webserver need to be running.
-6) The PHP modules attached to your webserver would be telling it that files with certain extension should be checked for PHP code.
-7) When a web client ( browser ) requests for something like http://somesite.com/index.php then the webserver would accept the request.  The PHP modules attached to the webserver would be telling it that index.php means, then it should be checked for PHP code and the PHP modules would be taking responsible for executing it.  The output of the PHP code would be sent to the web client ( browser).
-8) One thing PHP does not doe is client-side validation.
-9) What is client-side validation?  ->  Client-side validation means that the value entered in one field should meet certain criteria before moving to the next field.
-10) So, if PHP does not support client-side validation, how it would be achieved? -> Client-side validation would be achieved once PHP works along with javascript.
-11) The beauty of PHP is that it does not rely on web browser at all.  Your PHP script would be running no matter what browser you use.  There is no need to worry about whether its compatable with old browsers or whether it would work or not with some other browsers available in the market.
+2)It is used for creating interactive and dynamic websites.
+3) It is free and a good competitor for Microsoft's ASP.net.
+4) PHP supports many Database services such as MySQL, PostgreSQL, and Oracle, etc.
+5) PHP is opensource and free to download and use. 
+) It processes web pages contained in the web server before they are sent to the web browser which requests those pages.
+) The PHP code is processed by the PHP modules.
+) Inorder to PHP code be executed, you need to install PHP in your system and also Apache or similar webserver need to be running.
+) The PHP modules attached to your webserver would be telling it that files with certain extension should be checked for PHP code.
+) When a web client ( browser ) requests for something like http://somesite.com/index.php then the webserver would accept the request.  The PHP modules attached to the webserver would be telling it that index.php means, then it should be checked for PHP code and the PHP modules would be taking responsible for executing it.  The output of the PHP code would be sent to the web client ( browser).
+) One thing PHP does not doe is client-side validation.
+) What is client-side validation?  ->  Client-side validation means that the value entered in one field should meet certain criteria before moving to the next field.
+) So, if PHP does not support client-side validation, how it would be achieved? -> Client-side validation would be achieved once PHP works along with javascript.
+) The beauty of PHP is that it does not rely on web browser at all.  Your PHP script would be running no matter what browser you use.  There is no need to worry about whether its compatable with old browsers or whether it would work or not with some other browsers available in the market.
 
+Question:  What is a PHP file?
+1) PHP files can contain text, HTML tags, and scripts.
+2) PHP files are returned to the browser as plain HTMLs.
+3) PHP files will have extension of .php, .php3, and .phtml.
+
+=============
+PHP + MySQL
+=============
+
+You can write PHP with MysQL in windows, but still it would work in Unix/Linux platform.
+
+===============
+Basic PHP Syntax
+===============
+A PHP script always starts with <?php and ends with ?>. A PHP script can be placed anywhere in the document.
+On servers with shorthand-support, you can start a PHP script with <? and end with ?>.
+For maximum compatibility, we recommend that you use the standard form (<?php) rather than the shorthand form.
+
+<?php
+?>
+A PHP file must have a .php extension.
+
+A PHP file normally contains HTML tags, and some PHP scripting code.
+
+Below, we have an example of a simple PHP script that sends the text "Hello World" back to the browser:
+
+<html>
+<body>
+
+<?php
+echo "Hello World";
+?>
+
+</body>
+</html>
+
+Each code line in PHP must end with a semicolon. The semicolon is a separator and is used to distinguish one set of instructions from another.
+
+=============
+Comments in PHP
+=============
+
+In PHP, we use // to make a one-line comment or /* and */ to make a comment block:
+
+<html>
+<body>
+
+<?php
+//This is a comment
+
+/*
+This is
+a comment
+block
+*/
+?>
+
+</body>
+</html>
 ========================================================================================
 Chapter2 :  PHP TAGS
 ========================================================================================
