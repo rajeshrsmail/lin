@@ -124,3 +124,20 @@ Trainer should have relevant work experience in training.
 Candidate should be ready to relocate to training location temporarily .
 Trainer physical presence is mandatory and no online trainers .
 Compensation will be paid per day basis. 
+
+
+
+=================================================
+Senior System Administration requirement in SatMetrix Systems
+=================================================
+
+Responsible for maintaining, upgrading , patching and the ongoing administration and maintenance of all windows and some Linux servers
+Responsible for VMware administrations, management and support
+Responsible for monitoring all corp and production networks, servers, and applications.
+Develop and promote standard operating procedures
+Upgrades, installs and troubleshoots networks, networking hardware devices, software, and operating systems
+Develop and maintain a comprehensive database/library of all supporting documentation of Windows infrastructure servers, systems and applications
+Administer all Backup systems, tape rotation, and ensure all disaster recovery systems are up to date
+Keep up with daily tasks and production requests, creating users, managing web and FTP sites, antivirus, security scans, IDS monitoring,
+Provide on-call 24/7 operation support and weekend maintenance on rotation basis
+

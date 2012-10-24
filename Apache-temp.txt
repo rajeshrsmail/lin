@@ -203,6 +203,23 @@ Example: Allow from 10.1
 Example:  Deny from 10.0.0.0
 Example:  Deny from 10.1
 
+
+Order allow, deny means :
+
+( my definition ) :  First read (evaluate, but not execute ) all the computers/networks/domains  mentioned in the "allow from" directives.  Then after reading ( just reading and evaluating, not executing ) all these then Read all the computers/networks/domains mentioned in the "deny from" directives.
+
+Eg.  < Directory /var/www/html/mysite/images>
+
+         Order allow,deny
+         Allow from 10.0.0.1
+         Allow from 192.168.1.23
+         Allow from ram.com
+         deny from all
+         
+         </Directory>
+         
+         
+
 let's take a look at how Order allow,deny works.
 
 <Directory "/www">
@@ -245,7 +262,7 @@ Now, what happens if you forget to provide specific rules and use just the Order
   Order Allow,Deny
 </Directory>
 
-The presence of an Order directive can affect access to a part of the server even in the absence of accompanying Allow and Deny directives. That is because when you specify the Order allow,deny you also control the default access state. The example above will Deny all access to the /www directory because the default access state is set to Deny.
+The presence of an Order directive can affect access to a part of the server even in the absence of accompanying Allow and Deny directives. That is because when you specify the Order allow,deny you also control the default access state. The example above will Deny all access to the /www directory because the default access state is set to Deny. ( Deny from All ).
  
  
  Order allow,deny tells your web server that the Allow rules are processed before the Deny rules.
