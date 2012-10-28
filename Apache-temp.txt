@@ -1,7 +1,42 @@
 
 Chapter1:  Apache Superlinks
-Chapter2:  Building Apache from Source
+Chapter1b:  Apache Accel Topics
+Chapter2:  Apache Installation - Building Apache from Source
 Chapter3:  HTTP status codes
+ 
+
+=======================
+Important Notes from Rajesh:
+=======================
+
+1) grep -v ^# /etc/httpd/conf/httpd.conf
+2) In /etc/httpd/conf/httpd.conf, it has been mentioned as follows:
+
+    Alias /error "/var/www/error"
+    
+    So with a site with DocumentRoot of /var/www/html, the default ErrorDocument based files would be in /var/www/error
+    
+  3) Findings:
+  
+  You found that by default in /etc/httpd/conf/httpd.conf, it is mentioned that:
+  
+  <Directory /var/www/html>
+  
+  Options Indexes 
+  
+  </Directory>
+  
+  still you take out index.html from /var/www/html directory you are supposed to get the listing of files inside /var/www/html, but you wont get it.  Why?
+  
+  Because in /etc/httpd/conf.d/welcome.conf it is mentioned as follows
+  
+  Options -Indexes
+  ErrorDocument /error/noindex.html
+  
+  If you change Options -Indexes to Options Indexes and reload the Apache, you will get the directory listing.
+  
+  
+  
 
 From the Linux Administration Handbook:
 
@@ -12,10 +47,30 @@ Chapter1:  Apache SuperLinks:
 1) http://articles.slicehost.com/apache
 
     Comment:  Never to be missed.
-    
-==============================
-Chapter2:  Building Apache from Source
-==============================
+
+============================
+Chapter1b:  Apache Accel Topics
+=============================
+
+1) Concept of web servers.
+2) Starting and Stopping HTTPD.
+3) Connect to Apache Server from client browser.
+4) /var/www/html directory.
+5) /etc/httpd/conf/httpd.conf
+6) Options directive.
+7) Authentication and Access Control.
+8) Allow, Deny directives
+9) /var/log/httpd/access_log
+10) /var/log/httpd/error_log
+11) Securing Apache web server
+12) htpasswd command
+13) Virtual Hosting
+14) Name-based Virtual Hosting
+15) IP-Address based Virtual Hosting.
+
+==============================================
+Chapter2:  Apache Installation - Building Apache from Source 
+==============================================
  
  1) Latest stable release as of July 2012 -> 2.4.3
  
@@ -80,7 +135,55 @@ mpm_event
  404  -  Page not found on the server.
  
 503   - >>
+
+===================================
+Chapter4:  Apache Directives
+===================================
+
+(1) DocumentRoot           =  
+(2) ServerName              =
+(3) DirectoryIndex  
+
+  Simple Answer:  This directive tells the server what is the name of the homepage file ( eg. index.html ) that needs to be displayed by default when a user accesses a site (  
+                         www.example.com ).  By default,  in Apache it would be index.html.
+                         
+(4) AllowOverride         -    AllowOverride directive governs the behavior of .htaccess files. It tells whether the restrictions imposed by the Options can be
+                                     overridden by specific settings inside the .htaccess files. The default behavior is set to none and should remain that way.
+
+(5) Options                   =  Options directive declares which server features are valid for the specified directory;
+
+     Indexes                   =  Indexes directive tells the server whether to display the directory listing ( list the contents of the directory ) when requested by the web client when the 
+                                      default home page ( eg. index.html or index.php ) is found missing inside the corresponding directory.
+     Multiviews
+     FollowSymLinks         =    it allows webpages to use symbolic links to point to files located anywhere on the specified directory.
+     IfOwnerMatch
+     
  
+     
+ (6) Directory  =   <Directory /> declares the block for a specific directory and all of its subdirectories.
+ 
+ (7) LoadModule  -  
+ 
+  DIRECTORY TAG:  
+ Directory tags allow you to specify the configurations separately for each directory
+serving the web pages. This allows you to serve content to
+specific IP ranges while denying other ranges, limit access to certain files, set the
+behavior of pages contained in these directories, and more.
+ (7) Location
+ (8) Order deny,allow
+      Order allow,deny
+ (9)
+ 
+
+
+The most important thing that should be noted in /etc/httpd/conf/httpd.conf is:
+
+<Directory />
+Options -FollowSymLinks
+AllowOverride None
+Order allow,deny
+Deny from all
+</Directory>
  ====================
  What is apachectl command
  =====================
@@ -276,5 +379,8 @@ The presence of an Order directive can affect access to a part of the server eve
  10) Redirect:
  
 Redirect /old_dir/ http://www.yourdomain.com/new_dir/index.html
- 
+
+
+
+
  A
