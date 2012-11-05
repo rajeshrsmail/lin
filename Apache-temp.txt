@@ -4,6 +4,18 @@ Chapter1b:  Apache Accel Topics
 Chapter2:  Apache Installation - Building Apache from Source
 Chapter3:  HTTP status codes
  
+ 
+ ==============
+ Apache Links
+ -------------------
+ 
+ linuxplanet.com/tutorials
+ geekstuff.com
+ ducea.com
+ http.apache.org/docs/trunk/new_features_2_4.html
+ httpd.apache.org
+ devshed.com
+ 
 
 =======================
 Important Notes from Rajesh:
@@ -113,6 +125,28 @@ Step3:  Installation of apr-util
 
 Now, this should be running....
 
+
+Note:
+
+By default, the apache webserver which is compiled from the source runs as the system user named 'daemon' and the system group named 'daemon' ( with uid 1 and gid 1) .  It has a shell of Bourne and home dir with /usr/sbin.
+
+Let us change this:
+
+groupadd httpd -g 200
+useradd -g httpd -s /sbin/nologin -d /dev/null httpd
+
+change the following in /usr/local/apache2/conf/httpd.conf:
+
+User daemon
+Group daemon
+
+to
+
+User httpd
+Group httpd
+
+chown -R root:root /usr/local/apache2
+
 Question:  What is the MPM Module by default, when you compile from source:
 
 mpm_event
@@ -139,29 +173,49 @@ mpm_event
 ===================================
 Chapter4:  Apache Directives
 ===================================
+Here is the superlink on description about Apache Directives:
+http://www.centos.org/docs/4/html/rhel-rg-en-4/s1-apache-config.html
 
-(1) DocumentRoot           =  
-(2) ServerName              =
-(3) DirectoryIndex  
+ServerRoot                    =   This directive tells Apache the base ( root ) directory where Apache can find all the configuration files and directories needed for the server too
+                                        run.
+                                        By default ServerRoot is set to "/etc/httpd."
+                                        
+                                        
 
+(1) DocumentRoot           =  DocumentRoot refers to the directory where most of the files related to a particular website would be stored and will be served by Apache when requested 
+                                        by users via web browser.
+(2) ServerName              = 
+(3) DirectoryIndex 
   Simple Answer:  This directive tells the server what is the name of the homepage file ( eg. index.html ) that needs to be displayed by default when a user accesses a site (  
                          www.example.com ).  By default,  in Apache it would be index.html.
                          
 (4) AllowOverride         -    AllowOverride directive governs the behavior of .htaccess files. It tells whether the restrictions imposed by the Options can be
                                      overridden by specific settings inside the .htaccess files. The default behavior is set to none and should remain that way.
+                                     
+                           Another Definition:  The AllowOverride directive sets whether any Options can be overridden by the declarations in an .htaccess file. By default, both the root directory and the DocumentRoot are set to allow no .htaccess overrides.
 
 (5) Options                   =  Options directive declares which server features are valid for the specified directory;
+
+                                       By default, in the DocumentRoot directory, Options is set to include Indexes and FollowSymLinks. 
+                                       
+                                       
 
      Indexes                   =  Indexes directive tells the server whether to display the directory listing ( list the contents of the directory ) when requested by the web client when the 
                                       default home page ( eg. index.html or index.php ) is found missing inside the corresponding directory.
      Multiviews
-     FollowSymLinks         =    it allows webpages to use symbolic links to point to files located anywhere on the specified directory.
+     FollowSymLinks         =     FollowSymLinks allows the server to follow symbolic links in that directory.
      IfOwnerMatch
      
+      =  
  
      
- (6) Directory  =   <Directory /> declares the block for a specific directory and all of its subdirectories.
- 
+ (6) Directory  =   <Directory />  <Directory /path/to/directory> and </Directory> tags create a container used to enclose a group of configuration directives which apply only to a specific directory and its subdirectories. Any directive which is applicable to a directory may be used within Directory tags.
+ For example, if CGI scripts are located in /home/my_cgi_directory, add the following Directory container to the httpd.conf file:
+
+<Directory /home/my_cgi_directory>
+    Options +ExecCGI
+</Directory>
+
  (7) LoadModule  -  
  
   DIRECTORY TAG:  
@@ -169,17 +223,118 @@ Chapter4:  Apache Directives
 serving the web pages. This allows you to serve content to
 specific IP ranges while denying other ranges, limit access to certain files, set the
 behavior of pages contained in these directories, and more.
- (7) Location
+ (7) Location  =   Location Tags allow you to specify the configurations we wish to impose on a particular URL ( unlike the directory inside the filesystem)
+ 
+ 
+ Alias /images  "/opt/images"
+ <Location /images>
+   Options -Indexes
+   Order allow,deny
+   Allow from all
+   Deny from 10.0.0.1
+ </Location>
+ 
+ 
+ There is no directory as server-status, but the module status_module seems to take care of this.
+ 
+ 
+ Question:  How to run server-status as a separate site?
+ 
+ <VirtualHost *:9999>
+ 
+ <Location />
+ 
+ AuthUserFile /etc/httpd/.htpasswd
+ AuthName "Auth Required"
+ AuthType Basic
+ Require valid-user
+ SetHandler server-status
+ Order Deny,Allow
+ Deny from all
+ Allow from localhost sameipaddress( 192.168.1.101)
+ </Location>
+ 
+ 
  (8) Order deny,allow
       Order allow,deny
- (9)
+      
+      For security purposes, the web administrator can decide only certain IP address needs to be allowed and others could be restricted from the site, or vice verca.  For this we can use
+      
+      Allow from xxx
+      Deny from xxx
+      
+      The Order directive refers to whether first the server needs to execute IP addresses/names specified in the Allow from directive or Deny from directive.
+      
+      
+      eg. Order deny, allow
+      
+            deny from 10.0.0.1
+            deny from .example.com
+            Allow from All
+            
+            First deny directives will be checked ( So, first 10.0.0.1 and .example.com computers would be denied), then Allows from all ip addresses. ( rest of it)
+            
+ (9)  Listen           =        This directive tells the Apache server the ports that it needs to be listening to so that it could accept incoming requests through those ports.
  
+By default, the Apache HTTP Server is set to listen to port 80 for non-secure Web communications and (in the /etc/httpd/conf.d/ssl.conf file which defines any secure servers) to port 443 for secure Web communications.
 
+If the Apache HTTP Server is configured to listen to a port under 1024, only the root user can start it. For port 1024 and above, httpd can be started as a regular user.
+
+The Listen directive can also be used to specify particular IP addresses over which the server accepts connections.
+
+(10) Include                  = 
+
+(11) ServerAdmin           -  Sets the ServerAdmin directive to the email address of the Web server administrator. This email address shows up in error messages on server-generated Web    
+                                     pages, so users can report a problem by sending email to the server administrator.
+                                     
+ (12) NameVirtualHost     =    This directive is used for enabling Name-based virtual Hosting through which with a single IP Address we can host multiple domains.
+ 
+ NameVirtualHost *:80
+  
+ ------------------------
+ MPM-Specific Directives
+--------------------------
+
+StartServers             =    The number of Apache server process to be started.  
+
+                                    for Prefork MPM, it is 8
+                                    
+                                     However, note that many number of process will be started based on the number of requests that is being made from the client side.
+                                     
+                                     
+ MaxSpareServers      =  This limits the maximum number of server process that could be running at any point of time. ( default is 20 )
+ MinSpareServers       =  This value maintains things in such a way minimum 5 server processes would be running at any point of time  where default is 5
+
+MaxClients                =   Limits number of concurrent client requests at any point of time by default  to 150.  Maximum could be  256.
+MaxRequestsPerChild   =  Limits the total number of requests a child server process could serve in its lifetime , if it reaches this value it should die , default 4000 for prefork.
+
+
+LogFormat                 -  By default you will see the following log formats in /etc/httpd/conf/httpd.conf
+
+                                   Combined
+                                   Common
+                                   Referer
+                                   Agent
+                                   
+                                   
+                                   The above four are nicknames provided to certain Log formats.
+                                   We can choose which one we want by means of the following way:
+                                   
+                                    CustomLog /var/log/httpd/mysite_access.log combined
+                                    or
+                                    CustomLog /var/log/httpd/mysite_access.log Common
+                                    
+                                   
+                                   Or else, we can provide our own Custom nicknames as follows, for eg:
+                                   
+                                   LogFormat "%h %t %>s" rajeshrs
 
 The most important thing that should be noted in /etc/httpd/conf/httpd.conf is:
 
 <Directory />
 Options -FollowSymLinks
+
+
 AllowOverride None
 Order allow,deny
 Deny from all
@@ -381,6 +536,269 @@ The presence of an Order directive can affect access to a part of the server eve
 Redirect /old_dir/ http://www.yourdomain.com/new_dir/index.html
 
 
+11) What is DSO ?
+
+Dynamically Shared Objects.
+
+Apache is a modular program.  It supports static modules which would be present by default when Apache is built.  Apart from that dynamically loadable modules would be present.  Compulsorily, there would be some static modules, such as the core ( which contains the basic features/functionalities of Apache).  If the administrator wants to add some functionality, he can do so by using the Apache Extension tool, apxs.  These dynamically loadable modules are called DSO.
+
+Apache is a modular program where the administrator can choose the functionality to include in the server by selecting a set of modules.   The modules could be statically compiled at the time the server is built.  Alternatively, modules could be compiled as DSO modules that exist separately from the main httpd binary file. DSO modules may be compiled at the time the server is built, or they may be compiled and added at a later time using the Apache Extension Tool (apxs).
 
 
- A
+
+12) What is meant by MPM modules in Apache?
+
+( Link :  http://httpd.apache.org/docs/2.2/mpm.html ) 
+
+1) MPM - Multi Processing Modules
+MPM module is the most important module of Apache.  MPM module is like a manager for Apache whose responsibilities are :
+
+   (a) Binding to Network ports.
+   (b) Accepting Requests
+   (c) Dispatching child processes to handle the requests, generate child processes according to the load of the server.
+   
+   The MPM that are famous are:
+   
+   1) prefork
+   2) mpm worker
+   3) event
+   4) 
+   
+   
+   Worker MPM :
+   
+   1) If scalability is your concern, then choose this.
+   2) Thread-based MPM.
+   3) The worker MPM turns Apache into a multiprocess, multi-threaded web server
+   4)  Worker can handle more requests with less resources than prefork.
+   Multiprocess means -> The number of child servers started.
+   Multithread means ->  The number of connections made by child processes.
+   5) The Apache worker MPM started with Apache version 2.0
+   
+   Prefork MPM:
+   
+   1) Non-Threaded, Preforked web server functionality could be achieved through the prefork MPM.
+   2) If functions similar to the one which provides Apache 1.3 ( so compatible with older systems ) 
+   
+   
+   
+   At any time, only one MPM can exist.  As of apache 2.4.2 ( July 2012), the latest, the default MPM to be the 'event' MPM module.
+   
+   Depending on the functionality of your webserver, we can choose which MPM module is suitable.  Depending on the nature of your sites, your users, your primary focus, we can choose accordingly.
+   
+   
+   For eg, if scalability is what your primary concern, then go for MPM module or event module.
+             if stability and compatibility is your concern, then go for perfork or itk module.
+2) Depending on the functionality of your webserver, we can choose which MPM module is suitable 
+
+
+ A==================
+ 
+ 
+ (1)Web server - provides web pages ( such as html, video, and images ) on request by web clients ( typically a web browser)
+ (2) Apache, Nginx, lighttpd, google web server, IIS, etc.
+ (3) Apache is the most famous with over 55% market share.
+ (4) Apache version is now 2.4.x with RHEL giving still 2.2.xxx
+ (5) In RHEL, Apache's base directory ( this is where Apache "lives" ) is /etc/httpd directory.
+     In Apache's terms this directory is the "ServerRoot"
+     - All configuration directories and files would be inside this directory.
+     
+        eg. /etc/httpd/conf
+              /etc/httpd/conf.d
+              /etc/httpd/logs
+              /etc/httpd/ssl
+              
+ (6) To find out what is the version of Apache you are using :
+ 
+     httpd -v or apache2ctl -v in ubuntu or apachectl -v if source-built.
+     
+(7) To find out what MPM your Apache uses:
+
+    httpd -V | grep MPM  | 
+    
+    ( its capital V ).
+    
+ (8) To find out what are the modules that are being loaded:
+ 
+     httpd -M
+     
+  (9) To find out what are the static modules :
+  
+     httpd -l
+     or
+     httpd -M | grep static
+     
+  (10) To find out what are the dynamic ( shared) modules:
+  
+     httpd -M | grep shared
+     
+  (11) 
+ 
+ 
+ 
+ 
+ 
+ ==================
+ Apache FAQs
+ ==================
+ 
+ Q1) What are the Apache modules you are aware of?
+ 
+ 1) mod_ssl
+ 2) mod_rewrite
+ 3) mod_alias
+ 4) mod_access
+ 5) mod_proxy
+ 6) mod_expires
+ 7) mod_autoindex
+ 8) 
+ 
+ 
+Q2:  What is an HTTP method?
+
+One of the most important fields in a request is METHOD.  This tells the server how to handle the incoming data.
+
+1) GET
+2) HEAD
+3) POST
+4) PUT -  Tells web server to store the data.
+5)DELETE - Tells the server to delete the data.
+6)TRACE - Tells the server to return a diagnostic trace of the actions it takes.
+7) CONNECT - 
+
+Q3:  What is the difference between a thread and a process?
+
+Link:  http://periwinkle.99k.org/thread-vs-process.php
+
+1) When you click MSWord icon, then a process is started for that particular task.
+2) You start editing the MSWord file and now you give print option to print it.  The word program gives print option to print it.  The word program now starts a thread that will do printing job.  At the same time, it allows your editing too.
+3) Process is an execution instance of a program.  Thread is a "sub process" started by the main process.  Process is "heavy weight", thread is "lightweight".
+4) Each process needs memory to be allocated separately.
+But a thread will use the same address space of its parent process ( uses the same storage allocated for its parent process).
+5) MPM - Worker is a thread-based module.  It has multithreading and multiprocessing capabilities.
+6) Prefork - Prefork module is a process-based module, multiprocessing only !!
+7) Threads are easier to create than processes because they do not require a separate address space.
+8) Processes are independant of each other.  Threads, since they share the same address space, are interdependant.
+
+Q4:  How to check Apache via Telnet?
+
+telnet rajeshrs.org
+
+Trying 10.11.12.13
+Connected to rajeshrs.org
+Escape character is '^']
+
+GET /index.html HTTP/1.1  enter key
+host:  rajeshrs.org enterkey
+enterkey
+Now, the page content would be displayed as text.
+
+or
+
+telnet railsfactory.com
+HEAD / HTTP/1.1
+
+Response:  HTTP/1.1 200 ok
+Server:  Apache /blahblah  (Debian)
+
+
+Another method, but not encouraged:
+
+nmap -sV -P0 -p80 google.com
+
+Output - >  OS - linux
+server:  Google httpd 2.0 (GFE) 
+
+Another method
+
+wget -s theamp.com
+
+
+
+How to hide Apache Server Software Version?
+
+ServerTokens Prodonly
+ServerSignature Off
+
+( www.ducea.com and search for Apache tips and tricks) 
+
+
+
+===================
+Apache Interview Questions
+======================
+
+1) What is the log file location of Apache?
+a) /var/log/httpd ( centos)
+b) /var/log/apache2 ( Debian)
+
+2) What are the types of virtual hosts?
+
+a) Name-based Virtual Hosting -> Single IP Address , many web sites.  We need to enable it by the Directive NamebasedVirtualHosting *:80
+b) IP-Based Virtual Hosting -> Each site needs to have its own network adapter with a unique IP address of its own.
+
+3) How to restart Apache Web server?
+
+service httpd restart
+
+4) How do you check the version of Apache?
+
+rpm -qa | grep httpd
+httpd -v
+
+5) What is the meaning of Listen directive in httpd.conf file?
+
+Port number on which Apache needs to listen to for incoming requests.
+
+6) what is DocumentRoot?
+
+The directory which contains the html and other files accessible via web browser by the public.
+
+By default, the Apache server in RHEL is configured to serve files from /var/www/html directory.
+
+7) On which port the Apache server works?
+
+http - 80
+https- 443
+
+8) Main configuration file for Apache?
+
+/etc/httpd/conf/httpd.conf
+
+9) What is the latest version of Apache?
+
+2.4.x
+
+10) What is the difference between Location and Diirective directives?
+
+Location is a directive related to the URL a user is typing in the web browser.
+Directory is a directive related to the path of the directory in the filesystem.
+
+11) Difference between a restart and a graceful restart of a web server?
+
+During a normal restart, the server is stopped and then started, causing some requests to be lost.
+
+Graceful restart allows Apache children to continue to serve their current requests until they can be replaced with children running the new configuration.
+
+12) If you have added "LogLevel debug", in httpd.conf, the what will happen?
+
+It will give you more information in the error log inorder to debug a problem.
+
+13) Can you record the MAC address of clients that access your server?
+
+No.
+
+14) Can you record all the cookies sent to your server by clients in webserver logs?
+
+Yes.
+
+
+15) What can we do to find out how people are reaching your site?
+
+Add the followwing to your activity log format:
+
+%{Referer}
+s
+ 
+ 
+ 

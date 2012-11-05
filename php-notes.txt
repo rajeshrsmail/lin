@@ -1,7 +1,7 @@
 
                                   PHP
 																	
-																	
+																	http://www.cyberciti.biz/tips/php-security-best-practices-tutorial.html
 	Important Notes related to PHP:
 
 http://www.simplemachines.org/community/index.php?topic=2987.0
