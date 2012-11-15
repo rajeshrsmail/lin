@@ -1,0 +1,22 @@
+1) how to create a local repository out of your Debian system?
+
+Step1:  Put your DVD to Drive.
+Step2:  #apt-cdrom add
+
+~~[ Note:  This will add a new entry in /etc/apt/sources.list ]~~
+
+Check to see that it looks like the following:
+
+cat /etc/apt/sources.list
+
+deb cdrom:ubuntu 12.04 /pangolin main restricted
+
+~~[ Note:  Actual packages are in /cdrom/pool/main & /cdrom/pool/restricted
+
+Now, suppose you want to install NFS, then you should know its main package, that is, nfs-kernel-server.  It automatically installs dependent packages like nfs-common, portmap, along with 
+the nfs-kernel-server package.
+
+Step5: Now to install apache
+
+# apt-get install apache2
+

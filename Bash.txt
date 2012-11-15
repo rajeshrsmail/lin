@@ -1,0 +1,212 @@
+
+Important Notes:
+
+(1)  If you want to test whether a string is equivalent to another string:
+
+if test $string1 = $string2 then
+echo "success"
+else
+echo "failure"
+fi
+
+2) $# means the total number of arguments excluding $0
+
+
+~~~~~~~~~~~~~~~~~~
+Script number 1
+~~~~~~~~~~~~~~~~~~
+Question:  Write a script to display "Hello World":
+
+# touch helloworld.sh
+# chmod +x helloworld.sh
+# vi helloworld.sh
+
+#!/bin/bash
+
+clear
+echo "Hello World !!"
+:wq
+
+./helloworld.sh
+
+
+~~~~~~~~~~~~~~~~~
+Script number 2
+~~~~~~~~~~~~~~~~~
+
+Write a script to display date in dd/mmy/yyyy HH:MM:SS format
+
+eg. 20/08/2012 17:15:20
+
+# vi date.sh
+
+#! /bin/bash
+echo " today's date is..."
+date +%d/%m/%Y-%H:%M:%S
+
+
+
+Another way:
+date "+DATE: %d/%m/%y%nTIME: %H:%M:%S"
+
+Another way:
+#!/bin/bash
+echo "today's date is"
+
+DATE=$(date "+%d/%m/%y)
+echo $DATE
+
+~~~~~~~~~~~~~~~~
+Script number 3
+~~~~~~~~~~~~~~~~
+Write a script related to displaying a string constant:
+
+#!/bin/bash
+NAME=rajesh
+echo $NAME
+HOME2=/export/home2
+echo $HOME2
+PATH2=/usr/bin:/usr/sbin
+echo $PATH2
+
+
+~~~~~~~~~~~~~~~~~~~~
+Script number 4
+~~~~~~~~~~~~~~~~~~~~
+Write a script to backup the folder /backup to /backup.tar
+
+
+#!/bin/bash
+tar zcvf /backup.tar.gz /backup
+logger -p local0.notice "Backup done"
+
+
+
+Another way:
+
+Write a backup script such that /backup directories content will be backed up as backup_date.tar
+
+#!/bin/bash
+DIR=/var/data
+DATE=$(date "+%d%m%Y-%H%M%S")
+tar zcvf /BACKUPS/databackup-$DATE /var/data/
+~~~~~~~~~~~~~~~~~~
+Script number3 - IF statement
+~~~~~~~~~~~~~~~~~~
+
+#!/bin/bash
+echo -n "Enter your birthday in the following format : dd-mm-yyyy:"
+read bday
+today=$(date "+%d%m%y")
+if test $bday =  $today
+then
+echo "happy Birthday"
+else
+echo "Sorrry.. today is not your bday"
+fi
+
+
+~~~~~~~~~~~~~~~~
+Script number 4 - the relational operators
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#!/bin/bash
+echo "welcome to pos-neg program...Enter a number and I will tell u whether is a positive or negative value"
+read num
+if [ $num -ge 0 ]; then
+echo " oh.. it is a positive value"
+else
+echo "it is a negative value"
+fi
+
+the relational operators
+
+-gt 
+-lt
+-eq
+-ne
+
+~~~~~~~~~~~~~~~~~~~~
+Chapter 4 - Arguments
+~~~~~~~~~~~~~~~~~~~~
+
+#!/bin/bash
+echo "\$0 argument is $0"
+echo "\$1 argument is $1"
+echo "$2 argument is $2"
+
+echo " The total number of arguments are $#"
+echo "Following is a list of arguments $*"
+
+./test.sh violet yellow blue
+
+Output:
+
+$0 argument is ./test.sh
+$1 argument is violet
+$2 argument is yellow
+$3 argument is blue
+The total number of arguments is 3
+The following is list of arguments  -> violet yellow blue
+
+Following is a small bash script that would find out whether the $1 argument you have supplied is a positive or negative value.
+
+
+#!/bin/bash
+
+if [ $1 -ge 0 ]; then
+echo "The number you have provided is a positive value"
+else
+echo "The number you have provided seems to be a negative number"
+fi
+
+
+
+Following is an extension of the same program but it also display an error message if there are no arguments:
+
+
+#!/bin/bash
+
+if [ $# -eq 0 ]; then 
+echo "You should enter atleast one arguments, you silly "
+exit 1
+findif [ $1 -ge 0 ]; then 
+echo " Pos"
+else
+echo "Neg"
+fi
+
+Bash script to find out the greatest of 3 numbers
+
+vi test.sh
+
+#!/bin/bash
+echo -n "Enter the first number:"
+read num1
+echo -n "Enter the second number:"
+read num2
+echo -n "Enter the third number:"
+read C
+
+if [ $1 
+
+
+~~~~~~~~~~~~~~~~~~
+Reading numbers from stdin
+~~~~~~~~~~~~~~~~~~
+
+How to read multiple numbers?
+
+#!/bin/bash
+
+echo "Enter 3 numbers"
+read n1 n2 n3
+
+echo "$
+
+
+
+
+
+
+

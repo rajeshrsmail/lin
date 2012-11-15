@@ -46,3 +46,38 @@ Hi Friends,
 
 What is virtualization?
 
+
+4) Xen requires intel-VT or AMD-V support interms of hardware requirements.
+
+5) VMWare can run in any hardware.
+
+6) en.wikipedia.org/wiki/comparison_of_platform_virtual_machines
+
+7) XEN:  Provides paravirtualization solution.
+
+8) XenSource:  The commercial sponsor of Xen.  Provides products that are commercial extensions of Xen focussed on windows virtualization.  XenSource was recently acquired by Citrix.
+
+Nine) Baremetal:  Virtualized servers in which the virtualization sorftware is installed directly on the the machine, without the need of an Operating System.
+
+10) Virtualization for Dummies:  To find out the difference between paravirtualization and full virtualization.
+
+11) virtualizationadmin.com
+
+
+12) Emulation:  A sofware is used to simulate hardware for a guest operating system to run in., low performance.
+
+13) VMM - Virtual Machine Monitor
+              VMM is the other name for hypervisor.
+              
+14) Note1:  All virtualization techniques will involve the hypervisor [ VMM) .  The hypervisor is responsible for allocating and managing resources.
+
+
+
+15) Virtualization involves 3 basic things:
+
+1) Host OS
+2) Hypervisor
+3) Guest operating system
+
+16)  
+

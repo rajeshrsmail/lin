@@ -79,44 +79,7 @@ Course content :
 
 Course content : 
 
-	SOP required for Ubuntu OS Installation (thru CD and also with ISO image) 
-	OS level Trouble shooting
-	TVS Printer Installation and troubleshooting with respect to Ubuntu OS
-	MFP Printer Installation and troubleshooting with respect to Bunted OS
-	Types and usage of Commands used in Ubuntu OS (Command Prompt)
-	Third Party software installation and removing with respect to Ubuntu OS
-	Data Recovery Module thru terminal in Ubuntu OS
-	Log files analyzing module with respect to Ubuntu OS
-	FSCK problem 
-	Root level issues 
-	System Services with respect to Ubuntu OS
-	How to work thru command prompt in Ubuntu OS
-	Sudo 
-	Scanner installation and troubleshooting with respect to Ubuntu OS
-	SOP required for Booting Problem with respect to Ubuntu OS
-	How to enable Sharing options and trouble shooting in Ubuntu OS
-	Difference between Windows and Ubuntu OS (installation and Trouble shooting)
-	Printer and File sharing procedure with respect to Ubuntu OS
-	Access rights and User Administration
-	System restoration 
-	Troubleshooting of default settings (Mouse, Key Board, System Display)
-	How to Use SSH and telnet options in Ubuntu OS
-	Kernel services
-	File system Management
-	GRUB level error, INIT initialization, Kernel initialization, Boot Loader Components
-	Managing Start up - a) Changing the default run Level b) Exploring Xinted services
-	Syslog configuration
-	CUPS printer administration
-	Mounting file systems
-	Virtualization 
-	Recovery Run levels
-	File system problem during boot
-	Rescue environment
-	RPM packages with respect to Ubuntu
-	Installing software in rescue modes
-	System performance & Security
-	Account management
-
+ 
 
 
 Please note:Its not permanent job. 
@@ -140,4 +103,26 @@ Develop and maintain a comprehensive database/library of all supporting document
 Administer all Backup systems, tape rotation, and ensure all disaster recovery systems are up to date
 Keep up with daily tasks and production requests, creating users, managing web and FTP sites, antivirus, security scans, IDS monitoring,
 Provide on-call 24/7 operation support and weekend maintenance on rotation basis
+
+000000
+Spark
+-------
+
+Experience in web hosting companies (Internal linux admin profile or network engineer profile will not be a suit.)
+Web Services: Apache HTTPD, Apache Tomcat, 
+Databases: MySQL, PostgreSQL 
+Knowledge of clustering, MySQL, network fundamentals, and Shell scripting. 
+Should have been a part of atleast one 'from scratch ' installation projects like (monitoring (nagios ,cacti,ground works etc) setup for entire client infra , setup LAMP server, mysql clustering, asterisk server , VPN setup , backup setup
+Server virtualization : KVM, Xen, Vmware.
+Experience setting up monitoring for high availability.
+Strong in Networking concepts and TCP/IP, its Linux commands
+File permission settings, Security hardening, Firewalls (ip tables)
+Knowledge of SSH, FTP, NFS, SAMBA
+Mail services (MX record, MTA, MDA, etc)
+BIND,DNS Server concepts
+Real time experience in handling server outages
+Knowledge in monitoring tools like nagios cacti etc
+Cloud Computing Knowledge preferred
+Linux Package management tools (rpm, yum, apt-get etc)
+Good communication skills
 
