@@ -1,4 +1,8 @@
 
+
+Chapter10:  Read Command How to 
+
+
 Important Notes:
 
 (1)  If you want to test whether a string is equivalent to another string:
@@ -203,6 +207,194 @@ echo "Enter 3 numbers"
 read n1 n2 n3
 
 echo "$
+
+~~~~~~~~~~~~~~~~
+How to change the lower case lettered text in a file to uppercased text?
+
+cat > names.txt
+robin
+rajesh
+colby
+bianca
+karthik
+pravija
+
+CntrolD
+
+#tr "a-z" "A-Z"< names.txt > capnames.txt
+
+~~~~~~~~~~
+FOR-DO-DONE
+~~~~~~~~~~~
+
+#!/bin/bash
+
+echo -n " Enter a word and I will print it 8 times"
+
+read word
+
+for i in 1 2 3 4 5 6 7 8
+do
+echo "$i - $word"
+done
+
+
+chmod +x for1.sh
+
+
+
+2) #!/bin/bash
+echo -n "Enter a word and I will print it 8 times"
+read word
+
+for count in {1..8}
+do
+echo "$count - $word"
+done
+
+
+3) #!/bin/bash
+echo -n "Enter a word and I will print it 8 times with a step value of 2"
+read word
+
+for count in {1..8..2}
+do
+echo "$count - $word"
+done
+
+
+4) #!/bin/bash
+echo -n "enter a word and I will print it as much times you want..First enter the word here:"
+read word
+echo -n "Now enter how many times you want to display it...:"
+read maxcount
+for ((count=1;i<=$maxcount; count++))
+do
+echo "$count - $word"
+done
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+How to print a multiplication table of a given number
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+5)  #!/bin/bash
+
+echo -n "Enter the number for which multiplication table to be printed:"
+read num
+
+for ((count=1;count<=10;count++))
+do
+
+OUTPUT=$(expr $num \* $count)
+echo "$num * $count = $OUTPUT"
+done
+
+
+~~~~~~~~~~~~~~~~~~~~~
+WHILE-Do-Done
+~~~~~~~~~~~~~~~~~~~
+
+#!/bin/bash
+
+echo -en "The following program will display the multiplication table for a number you enter...\n So enter a number here ->"
+read num
+count=1
+while [ $count -le 10 ]
+do
+echo "$num * $count = expr $num \* $count"
+count = $(expr $count + 1 )
+done
+
+ [ not sure the above is going to work or not ]
+ 
+ 
+ 
+ ~~~~~~~~~~~~~~~~~~~~~~~
+ 
+ CASE STATEMENT
+ 
+ ~~~~~~~~~~~~~~~~~~~~~~~
+ 
+ case $var in
+ 
+ <variable-value1> )   command;
+ 
+ <variable-value2> )   command;
+ 
+ <variable-value3> )  command;
+ 
+ *) command;
+ 
+ 
+esac
+
+example:
+
+echo "This program will let you know what are all my favorites are ...."
+
+echo -ne "Following are the options you can select...\n
+
+ 1. My favorite movies
+ 2. My Favorite singers
+ 3. My favorite colors \n
+ please select 1,2, or 3 here:"
+
+read num
+
+case $num in 
+
+1) echo " anjali, pushpak";
+2) echo "spb, chitra";
+3) echo "blue, orange";
+esac
+
+
+
+In Bash Scripting, how to accept a word but not echo it in the stdout...
+
+
+
+
+
+@@@@@@@@@@@@@@@@@@@
+@ Chapter 10  - Read Statement   @
+@@@@@@@@@@@@@@@@@@@
+
+To know more details about read statement:
+
+http://www.linuxnix.com/2012/05/7-linux-read-command-examples-shell-scripting.html
+
+Usage1:  echo "Enter a value"
+             read value
+             
+Usage2: 
+read -p "Enter a value"
+echo $REPLY
+
+Note:  Advantages of read command in Usage 2  is -> you need not have an echo command and then read it.  With a single read command will serve the purpose.
+
+Usage3:
+How to "Press any key to continue.." in Bash?
+
+echo "Press any key to continue..."
+read -sn 1 
+
+Usage4:
+
+How to "Press any key to continue..." in Bash?
+read -sn 1 -p "Press any key to continue.."
+
+
+@@@@@@@@@@@@@@@@@@@@
+@Chapter11-
+
+/dev/null - A file which is used to send unwanted output of a program.
+
+
+
+
+
+
 
 
 

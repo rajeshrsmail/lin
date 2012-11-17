@@ -1,0 +1,13 @@
+oscarcanada.org -> 
+
+1) OSCAR is an EMR software.
+2) It is a free open source project.
+3) How to install the oscar EMR software in Debian:
+
+
+
+How to install oscar emr:
+
+http://www.oscarmanual.org/oscar_emr_12/developers/installation/12_1deb
+
+ http://www.oscarmanual.org/oscar_emr_12/developers/installation/12_1deb
