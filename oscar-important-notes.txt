@@ -1,0 +1,45 @@
+How to create SSL certificate selfsigned with Tomcat:
+
+1. Create an SSL certificate using the java supplied keytool:
+
+$JAVA_HOME/bin/keytool -genkey -alias tomcat -keyalg RSA
+
+NOTE: If you get the error:
+keytool error: java.lang.Exception: Key pair not generated, alias <tomcat> already exists
+Then most probably you have a key file already in your user directory. If you are root, this will be /root/.keystore
+
+2. You will be requested for data that will show on your user browser's certificate, fill them all in.
+Notice that the bold font is my input. No problem if you stick to the password "changeit" as it is the default password used by tomcat.
+
+Enter keystore password: changeit
+Re-enter new password: changeit
+What is your first and last name: Jeremy Atkins
+What is your organizational unit: OU
+What is the name of your organization: NOYO
+What is the name of your city or your locality: MyCity
+What is the name of your state or province: Saudi Arabia
+What is the two-letter country code for this unit:  uk
+Is the entered data correct: yes
+
+Enter key password for <tomcat>
+        (RETURN if same as keystore password): PRESS RETURN KEY
+
+It is important to have the keystore password and the key password the same. This is done by pressing the RETURN KEY in the last step. This is necessary since Tomcat doesn't support having different passwords in the keystore and key.
+
+3. When you're done with the previous step, a keystore file gets created in the user directory named keystore. Since I'm the root user, I will find it in /root/.keystore.
+Check that the file /root/.keystore got created.
+
+4. Next, open the tomcat server.xml for editing:
+vi ${tomcat_installation_dir}/conf/server.xml
+
+
+
+Enter keystore password: changeit
+Re-enter new password: changeit
+What is your first and last name: test
+What is your organizational unit: test
+What is the name of your organization: test
+What is the name of your city or your locality: test
+What is the name of your state or province: test
+What is the two-letter country code for this unit:  US
+Is the entered data correct: yes
